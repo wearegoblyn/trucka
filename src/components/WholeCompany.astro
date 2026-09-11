@@ -1,26 +1,69 @@
 ---
-import { Picture } from "astro:assets";
-import wholeCompanyImage from "../assets/whole-company-desktop.png";
+import { getImage } from "astro:assets";
+import wholeCompanyDesktop from "../assets/whole-company-desktop.jpg";
+import wholeCompanyMobile from "../assets/whole-company-mobile.jpg";
 import SectionBadge from "./SectionBadge.astro";
 import SplitHeading from "./SplitHeading.astro";
+
+const quality = 55;
+
+const desktopAvif = await getImage({
+  src: wholeCompanyDesktop,
+  format: "avif",
+  width: 1920,
+  widths: [960, 1440, 1920],
+  quality,
+});
+const desktopWebp = await getImage({
+  src: wholeCompanyDesktop,
+  format: "webp",
+  width: 1920,
+  widths: [960, 1440, 1920],
+  quality,
+});
+const mobileAvif = await getImage({
+  src: wholeCompanyMobile,
+  format: "avif",
+  width: 780,
+  widths: [390, 780],
+  quality,
+});
+const mobileWebp = await getImage({
+  src: wholeCompanyMobile,
+  format: "webp",
+  width: 780,
+  widths: [390, 780],
+  quality,
+});
 ---
 
 <section class="section-pad-tall relative isolate" data-reveal-root>
   <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-    <Picture
-      src={wholeCompanyImage}
-      alt=""
-      widths={[390, 780, 1280]}
-      sizes="100vw"
-      width={1280}
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={55}
-      pictureAttributes={{ class: "absolute inset-0 h-full w-full" }}
-      class="absolute inset-0 h-full w-full object-cover opacity-35"
-      loading="lazy"
-      decoding="async"
-    />
+    <picture class="absolute inset-0 h-full w-full">
+      <source
+        media="(min-width: 64rem)"
+        type="image/avif"
+        srcset={desktopAvif.srcSet.attribute}
+        sizes="100vw"
+      />
+      <source
+        media="(min-width: 64rem)"
+        type="image/webp"
+        srcset={desktopWebp.srcSet.attribute}
+        sizes="100vw"
+      />
+      <source type="image/avif" srcset={mobileAvif.srcSet.attribute} sizes="100vw" />
+      <source type="image/webp" srcset={mobileWebp.srcSet.attribute} sizes="100vw" />
+      <img
+        src={mobileWebp.src}
+        alt=""
+        width={wholeCompanyMobile.width}
+        height={wholeCompanyMobile.height}
+        class="absolute inset-0 h-full w-full max-w-none object-cover opacity-35"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
     <div class="absolute inset-0 bg-gradient-to-b from-black via-black/0 to-black"></div>
   </div>
   <div class="page-wrap flex justify-center">
