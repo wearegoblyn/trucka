@@ -1,0 +1,43 @@
+---
+import { faqs } from "../data/content";
+import FAQCard from "./FAQCard.astro";
+import SectionBadge from "./SectionBadge.astro";
+import SplitHeading from "./SplitHeading.astro";
+---
+
+<section id="faq" class="scroll-mt-24 bg-velocity-wash py-16 lg:scroll-mt-28 lg:py-[120px]" data-reveal-root>
+  <div class="page-wrap flex flex-col items-start gap-8 lg:gap-12">
+    <SectionBadge label="Concise Answers" />
+    <div class="flex flex-col gap-6">
+      <SplitHeading
+        class="max-w-[600px] font-serif text-[32px] leading-[1.2] text-text-primary lg:text-5xl lg:leading-none lg:text-balance"
+        text="Concise answers to the questions we hear most."
+      />
+      <p data-reveal data-reveal-delay="2" class="max-w-[900px] text-lg leading-[1.6] text-text-secondary">
+        We keep the process transparent so you can make an informed decision about whether a corporate acquisition is the right path for your business.
+      </p>
+    </div>
+    <div class="w-full max-w-full" data-stagger-group>
+      {faqs.map((faq, index) => (
+        <FAQCard index={index} question={faq.question} answer={faq.answer} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const bindFaqs = () => {
+    document.querySelectorAll("[data-faq-item]").forEach((item) => {
+      const trigger = item.querySelector("[data-faq-trigger]");
+      if (!(trigger instanceof HTMLButtonElement) || trigger.dataset.bound === "true") return;
+      trigger.dataset.bound = "true";
+      trigger.addEventListener("click", () => {
+        const open = item.classList.toggle("is-open");
+        trigger.setAttribute("aria-expanded", String(open));
+      });
+    });
+  };
+
+  bindFaqs();
+  document.addEventListener("astro:page-load", bindFaqs);
+</script>

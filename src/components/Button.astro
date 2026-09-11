@@ -1,0 +1,28 @@
+---
+interface Props {
+  style?: "primary" | "secondary" | "outline";
+  label: string;
+  href?: string;
+  full?: boolean;
+  disabled?: boolean;
+}
+
+const { style = "primary", label, href, full = false, disabled = false } = Astro.props;
+
+const styles = {
+  primary: "btn-primary text-text-on-light",
+  secondary: "btn-secondary text-text-primary",
+  outline: "btn-secondary text-text-primary",
+};
+
+const width = full ? "w-full lg:w-auto" : "w-auto shrink-0";
+const classes = `inline-flex items-center justify-center whitespace-nowrap rounded-[30px] border-[1.5px] px-7 py-3.5 text-center text-base font-semibold leading-none transition-[box-shadow,color] duration-200 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-primary lg:px-8 lg:py-5 ${styles[style]} ${width}`;
+---
+
+{href && !disabled ? (
+  <a class={classes} href={href}>{label}</a>
+) : (
+  <button class={`${classes} disabled:cursor-not-allowed`} type="button" disabled={disabled} aria-disabled={disabled ? "true" : undefined}>
+    {label}
+  </button>
+)}

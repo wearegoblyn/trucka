@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "../assets/hero-desktop.png";
+import Button from "./Button.astro";
+import SectionBadge from "./SectionBadge.astro";
+import SplitHeading from "./SplitHeading.astro";
+---
+
+<section
+  class="relative isolate flex overflow-hidden py-16 lg:-mt-[var(--header-height)] lg:pt-[calc(4rem+var(--header-height))] xl:min-h-dvh xl:flex-col xl:justify-center xl:py-24"
+  aria-labelledby="hero-heading"
+  data-reveal-root
+  data-reveal-on="load"
+>
+  <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <Image
+      src={heroImage}
+      alt=""
+      widths={[390, 780, 1440, 2160]}
+      sizes="100vw"
+      pictureAttributes={{ class: "absolute inset-0 h-full w-full" }}
+      class="h-full w-full max-w-none object-cover object-bottom opacity-70 xl:opacity-80"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/45 to-black/85"></div>
+  </div>
+
+  <div class="page-wrap flex flex-col items-start gap-6 lg:items-center lg:gap-12">
+    <SectionBadge label="Direct Acquisition Advisory" />
+    <SplitHeading
+      as="h1"
+      id="hero-heading"
+      class="max-w-[1100px] font-serif text-[40px] leading-[1.2] text-text-primary lg:text-center lg:text-[72px] lg:leading-[1.1] lg:text-balance"
+      text={"We buy trucking companies\nthe way it's supposed to be\u00a0done."}
+    />
+    <p data-reveal data-reveal-delay="2" class="max-w-[720px] text-base leading-[1.5] text-accent-soft lg:text-center lg:text-xl lg:leading-[1.6]">
+      Velocity Strategic Inc. is the premier corporate acquirer paying outright cash for trucking corporations and LLCs with complete security, legal purchase agreements, and verified third-party escrow.
+    </p>
+    <div data-reveal data-reveal-delay="3" class="flex w-full flex-col gap-4 lg:w-auto lg:flex-row lg:gap-6">
+      <Button href="#contact" label="Call Us Now" style="primary" full />
+      <Button href="#contact" label="Email Us" style="outline" full />
+    </div>
+  </div>
+</section>

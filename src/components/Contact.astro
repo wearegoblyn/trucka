@@ -1,0 +1,24 @@
+---
+import Button from "./Button.astro";
+import SectionBadge from "./SectionBadge.astro";
+import SplitHeading from "./SplitHeading.astro";
+---
+
+<section id="contact" class="scroll-mt-24 pb-12 pt-16 lg:scroll-mt-28 lg:py-[120px]" data-reveal-root>
+  <div class="page-wrap flex justify-center">
+  <div class="flex max-w-[1000px] flex-col items-center gap-6 text-center lg:gap-12">
+    <SectionBadge label="Advisory Consultation" />
+    <SplitHeading
+      class="font-serif text-[32px] leading-[1.2] text-text-primary lg:text-5xl lg:leading-none lg:text-balance"
+      text="Want a number on your company?"
+    />
+    <p data-reveal data-reveal-delay="2" class="max-w-[640px] text-lg leading-[1.6] text-text-primary">
+      Call and we'll talk it through. No forms, no drip emails, no obligation. If it isn't a deal we'd do, we'll tell you on the first call-and tell you why.
+    </p>
+    <div data-reveal data-reveal-delay="3" class="flex w-full flex-col gap-4 lg:w-auto lg:flex-row lg:gap-6">
+      <Button label="Call Us Now" style="primary" full disabled />
+      <Button label="Email Us" style="outline" full disabled />
+    </div>
+  </div>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+  index?: number;
+}
+
+const { question, answer, index = 0 } = Astro.props;
+const panelId = `faq-panel-${index}`;
+---
+
+<div class="faq-item w-full border-b border-white/25" data-faq-item style={`--i: ${index}`}>
+  <button
+    type="button"
+    class="flex w-full cursor-pointer items-center justify-between gap-6 py-5 text-left text-white"
+    data-faq-trigger
+    aria-expanded="false"
+    aria-controls={panelId}
+  >
+    <h3 class="font-serif text-lg font-normal leading-snug text-white lg:text-xl">{question}</h3>
+    <span class="flex size-8 shrink-0 items-center justify-center text-white" aria-hidden="true">
+      <svg
+        class="faq-icon size-5"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5 7.5 10 12.5 15 7.5"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+  </button>
+  <div id={panelId} class="faq-panel" role="region">
+    <div class="faq-panel-inner">
+      <p class="w-full pb-5 pr-12 font-sans text-base leading-[1.6] text-white">{answer}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .faq-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s ease-in-out;
+  }
+
+  .faq-item.is-open .faq-panel {
+    grid-template-rows: 1fr;
+  }
+
+  .faq-panel-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .faq-icon {
+    transition: transform 0.45s ease-in-out;
+  }
+
+  .faq-item.is-open .faq-icon {
+    transform: rotate(180deg);
+  }
+</style>

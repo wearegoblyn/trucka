@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://velocitystrategic.com/sitemap-index.xml
+LLMs: https://velocitystrategic.com/llms.txt

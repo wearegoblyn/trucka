@@ -1,0 +1,17 @@
+---
+import badgeDot from "../assets/badge-dot.svg";
+
+interface Props {
+  label: string;
+  size?: "desktop" | "mobile";
+}
+
+const { label } = Astro.props;
+---
+
+<div data-reveal data-reveal-delay="0" class="inline-flex items-center gap-2 rounded-lg border border-border-subtle bg-surface-card px-[18px] py-2.5 lg:gap-2.5 lg:px-4 lg:py-[15px]">
+  <img src={badgeDot.src} alt="" width="6" height="6" class="size-1.5 shrink-0 lg:size-3" />
+  <span class="text-xs tracking-[0.96px] text-text-primary lg:text-base lg:tracking-normal">
+    {label}
+  </span>
+</div>

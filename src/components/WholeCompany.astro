@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import wholeCompanyImage from "../assets/whole-company-desktop.png";
+import SectionBadge from "./SectionBadge.astro";
+import SplitHeading from "./SplitHeading.astro";
+---
+
+<section class="relative isolate overflow-hidden py-16 lg:py-[196px]" data-reveal-root>
+  <div class="absolute inset-0 -z-10" aria-hidden="true">
+    <Image
+      src={wholeCompanyImage}
+      alt=""
+      widths={[390, 780, 1440]}
+      sizes="100vw"
+      class="absolute inset-0 h-full w-full object-cover opacity-35"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-black/0 to-black"></div>
+  </div>
+  <div class="page-wrap flex justify-center">
+  <div class="flex max-w-[840px] flex-col items-center gap-6 text-center lg:gap-10">
+    <SectionBadge label="Strategic Acquisition" />
+    <SplitHeading
+      class="max-w-[760px] font-serif text-[36px] leading-[1.2] text-text-primary lg:text-5xl lg:leading-none lg:text-balance"
+      text="We buy the whole company, history and all."
+    />
+    <p data-reveal data-reveal-delay="2" class="text-xl leading-[1.6] text-accent-soft">
+      The company's safety record, insurance history, and unpaid obligations stay with it. We review the file before making an offer and put every handover detail in writing-from corporate records to the business phone number. An honest price upfront, not surprises after you've committed.
+    </p>
+  </div>
+  </div>
+</section>

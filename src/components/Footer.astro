@@ -1,0 +1,42 @@
+---
+import { footerCompany, footerResources, site } from "../data/content";
+---
+
+<footer class="bg-velocity-footer-wash py-8 lg:pb-12 lg:pt-20">
+  <div class="page-wrap">
+  <div class="hidden items-start justify-between lg:flex">
+    <div class="flex max-w-[400px] flex-col gap-6">
+      <p class="font-serif text-[28px] leading-none text-text-primary">{site.name}</p>
+      <p class="text-sm leading-[1.5] text-text-secondary">
+        Bespoke corporate acquisitions for the domestic logistics sector. Secure cash transfers, legal escrow integration, and absolute regulatory alignment.
+      </p>
+    </div>
+    <div class="flex gap-[100px] text-sm">
+      <div class="flex flex-col gap-4">
+        <p class="font-bold uppercase text-text-accent">Resources</p>
+        {footerResources.map((item) => (
+          <p class="text-text-secondary" aria-disabled="true">{item}</p>
+        ))}
+      </div>
+      <div class="flex flex-col gap-4">
+        <p class="font-bold uppercase text-text-accent">Company</p>
+        {footerCompany.map((item) => (
+          <p class="text-text-secondary" aria-disabled="true">{item}</p>
+        ))}
+        <a class="text-text-secondary hover:text-text-primary" href="#contact">Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <div class="hidden items-center justify-between pt-16 text-sm text-text-secondary lg:flex">
+    <p>© 2026 {site.name} All rights reserved.</p>
+    <p>Compliance verified in accordance with federal DOT guidelines.</p>
+  </div>
+
+  <div class="flex flex-col gap-6 lg:hidden">
+    <p class="font-serif text-2xl leading-none text-text-primary">{site.name}</p>
+    <p class="text-sm leading-[1.5] text-text-secondary">
+      © 2026 {site.name} All rights reserved. Orlando, Florida.
+    </p>
+  </div>
+  </div>
+</footer>
