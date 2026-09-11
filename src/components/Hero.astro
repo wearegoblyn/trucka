@@ -6,34 +6,34 @@ import Button from "./Button.astro";
 import SectionBadge from "./SectionBadge.astro";
 import SplitHeading from "./SplitHeading.astro";
 
-const quality = 70;
+const quality = 80;
 
 const desktopAvif = await getImage({
   src: heroDesktop,
   format: "avif",
-  width: 1920,
-  widths: [960, 1440, 1920],
+  width: heroDesktop.width,
+  widths: [768, heroDesktop.width],
   quality,
 });
 const desktopWebp = await getImage({
   src: heroDesktop,
   format: "webp",
-  width: 1920,
-  widths: [960, 1440, 1920],
+  width: heroDesktop.width,
+  widths: [768, heroDesktop.width],
   quality,
 });
 const mobileAvif = await getImage({
   src: heroMobile,
   format: "avif",
-  width: 780,
-  widths: [390, 780],
+  width: heroMobile.width,
+  widths: [390, heroMobile.width],
   quality,
 });
 const mobileWebp = await getImage({
   src: heroMobile,
   format: "webp",
-  width: 780,
-  widths: [390, 780],
+  width: heroMobile.width,
+  widths: [390, heroMobile.width],
   quality,
 });
 ---

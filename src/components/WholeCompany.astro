@@ -5,34 +5,34 @@ import wholeCompanyMobile from "../assets/whole-company-mobile.jpg";
 import SectionBadge from "./SectionBadge.astro";
 import SplitHeading from "./SplitHeading.astro";
 
-const quality = 55;
+const quality = 80;
 
 const desktopAvif = await getImage({
   src: wholeCompanyDesktop,
   format: "avif",
-  width: 1920,
-  widths: [960, 1440, 1920],
+  width: wholeCompanyDesktop.width,
+  widths: [768, wholeCompanyDesktop.width],
   quality,
 });
 const desktopWebp = await getImage({
   src: wholeCompanyDesktop,
   format: "webp",
-  width: 1920,
-  widths: [960, 1440, 1920],
+  width: wholeCompanyDesktop.width,
+  widths: [768, wholeCompanyDesktop.width],
   quality,
 });
 const mobileAvif = await getImage({
   src: wholeCompanyMobile,
   format: "avif",
-  width: 780,
-  widths: [390, 780],
+  width: wholeCompanyMobile.width,
+  widths: [390, wholeCompanyMobile.width],
   quality,
 });
 const mobileWebp = await getImage({
   src: wholeCompanyMobile,
   format: "webp",
-  width: 780,
-  widths: [390, 780],
+  width: wholeCompanyMobile.width,
+  widths: [390, wholeCompanyMobile.width],
   quality,
 });
 ---
