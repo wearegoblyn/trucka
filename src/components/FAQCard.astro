@@ -17,7 +17,7 @@ const panelId = `faq-panel-${index}`;
     aria-expanded="false"
     aria-controls={panelId}
   >
-    <h3 class="font-serif text-lg font-normal leading-snug text-white lg:text-xl">{question}</h3>
+    <h3 class="font-serif text-xl font-normal leading-heading text-text-primary">{question}</h3>
     <span class="flex size-8 shrink-0 items-center justify-center text-white" aria-hidden="true">
       <svg
         class="faq-icon size-5"
@@ -37,7 +37,7 @@ const panelId = `faq-panel-${index}`;
   </button>
   <div id={panelId} class="faq-panel" role="region">
     <div class="faq-panel-inner">
-      <p class="w-full pb-5 pr-12 font-sans text-base leading-[1.6] text-white">{answer}</p>
+      <p class="body-copy w-full pb-5 pr-12">{answer}</p>
     </div>
   </div>
 </div>

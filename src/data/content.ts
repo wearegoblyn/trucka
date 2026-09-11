@@ -39,19 +39,16 @@ export const faqs = [
 
 export const processSteps = [
   {
-    eyebrow: "Step 01",
     title: "Initial Consultation",
     description:
       "Talk through your goals, current structure, and what you want to achieve. We'll tell you whether we can move forward before you share any sensitive documents.",
   },
   {
-    eyebrow: "Step 02",
     title: "File Review",
     description:
       "We review the corporate file, safety history, insurance, and outstanding obligations. If it fits our criteria, we'll make an offer based on the whole company.",
   },
   {
-    eyebrow: "Step 03",
     title: "Escrow & Closing",
     description:
       "Funds go into third-party escrow before the agreement is signed. The contract spells out every condition, and release happens only when those conditions are met.",

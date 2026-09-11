@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { fmcsaBulletinUrl } from "../data/content";
 import checkCircle from "../assets/check-circle.svg";
 import xCircle from "../assets/x-circle.svg";
@@ -17,12 +18,12 @@ import SplitHeading from "./SplitHeading.astro";
       />
     </div>
     <div data-reveal data-reveal-delay="2" class="flex max-w-[480px] flex-col gap-4">
-      <p class="text-lg leading-[1.6] text-accent-soft">
+      <p class="body-copy">
         Not as a standalone number. FMCSA's{' '}
         <a class="text-text-accent underline-offset-2 hover:underline" href={fmcsaBulletinUrl} target="_blank" rel="noopener noreferrer">March 2026 bulletin</a>
         {' '}distinguishes between selling a number and a legitimate corporate transaction.
       </p>
-      <p class="text-base leading-[1.6] text-text-secondary">
+      <p class="body-copy">
         We buy the entire corporate entity and LLC shares-not a decoupled operating authority detached from the legal business structure.
       </p>
     </div>
@@ -30,22 +31,22 @@ import SplitHeading from "./SplitHeading.astro";
 
   <div class="mt-8 grid gap-4 lg:mt-16 lg:grid-cols-2 lg:gap-10" data-stagger-group>
     <article class="card-panel" style="--i: 0">
-      <h3 class="font-serif text-2xl leading-none text-text-accent lg:text-[32px]">Sole Proprietorship</h3>
+      <h3 class="font-serif text-2xl font-normal leading-heading text-text-accent">Sole Proprietorship</h3>
       <p class="body-copy">
         Your USDOT number belongs to you-not a separate company. It cannot be sold or transferred, even when someone buys your entire operation. The buyer needs their own USDOT number, and MC operating authority must be handled separately as part of the sale.
       </p>
       <div class="flex items-center gap-3">
-        <img src={xCircle.src} alt="" width="20" height="20" decoding="async" class="size-5 shrink-0" />
+        <Image src={xCircle} alt="" width={20} height={20} class="size-5 shrink-0" loading="lazy" decoding="async" />
         <p class="text-sm font-bold text-text-accent">Non-Transferable Entity Structure</p>
       </div>
     </article>
     <article class="card-panel" style="--i: 1">
-      <h3 class="font-serif text-2xl leading-none text-text-accent lg:text-[32px]">Corporation or LLC</h3>
+      <h3 class="font-serif text-2xl font-normal leading-heading text-text-accent">Corporation or LLC</h3>
       <p class="body-copy">
         The USDOT number stays with the company if the same legal entity keeps operating after the sale. Ownership changes must be reported to FMCSA immediately. MC authority has separate rules and may require an update, recorded transfer, or new application.
       </p>
       <div class="flex items-center gap-3">
-        <img src={checkCircle.src} alt="" width="20" height="20" decoding="async" class="size-5 shrink-0" />
+        <Image src={checkCircle} alt="" width={20} height={20} class="size-5 shrink-0" loading="lazy" decoding="async" />
         <p class="text-sm font-bold text-text-accent">Acquisition Viable Legal Entity</p>
       </div>
     </article>

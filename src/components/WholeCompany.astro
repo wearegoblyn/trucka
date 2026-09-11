@@ -1,11 +1,12 @@
 ---
-import { getImage } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import wholeCompanyDesktop from "../assets/whole-company-desktop.jpg";
 import wholeCompanyMobile from "../assets/whole-company-mobile.jpg";
 import SectionBadge from "./SectionBadge.astro";
 import SplitHeading from "./SplitHeading.astro";
 
 const quality = 80;
+const sizes = "100vw";
 
 const desktopAvif = await getImage({
   src: wholeCompanyDesktop,
@@ -28,13 +29,6 @@ const mobileAvif = await getImage({
   widths: [390, wholeCompanyMobile.width],
   quality,
 });
-const mobileWebp = await getImage({
-  src: wholeCompanyMobile,
-  format: "webp",
-  width: wholeCompanyMobile.width,
-  widths: [390, wholeCompanyMobile.width],
-  quality,
-});
 ---
 
 <section class="section-pad-tall relative isolate" data-reveal-root>
@@ -44,22 +38,23 @@ const mobileWebp = await getImage({
         media="(min-width: 64rem)"
         type="image/avif"
         srcset={desktopAvif.srcSet.attribute}
-        sizes="100vw"
+        sizes={sizes}
       />
       <source
         media="(min-width: 64rem)"
         type="image/webp"
         srcset={desktopWebp.srcSet.attribute}
-        sizes="100vw"
+        sizes={sizes}
       />
-      <source type="image/avif" srcset={mobileAvif.srcSet.attribute} sizes="100vw" />
-      <source type="image/webp" srcset={mobileWebp.srcSet.attribute} sizes="100vw" />
-      <img
-        src={mobileWebp.src}
+      <source type="image/avif" srcset={mobileAvif.srcSet.attribute} sizes={sizes} />
+      <Image
+        src={wholeCompanyMobile}
         alt=""
-        width={wholeCompanyMobile.width}
-        height={wholeCompanyMobile.height}
-        class="absolute inset-0 h-full w-full max-w-none object-cover opacity-35"
+        format="webp"
+        widths={[390, wholeCompanyMobile.width]}
+        sizes={sizes}
+        quality={quality}
+        class="h-full w-full max-w-none object-cover opacity-35"
         loading="lazy"
         decoding="async"
       />
@@ -73,7 +68,7 @@ const mobileWebp = await getImage({
       class="heading-section max-w-[760px]"
       text="We buy the whole company, history and all."
     />
-    <p data-reveal data-reveal-delay="2" class="text-xl leading-[1.6] text-accent-soft">
+    <p data-reveal data-reveal-delay="2" class="body-copy">
       The company's safety record, insurance history, and unpaid obligations stay with it. We review the file before making an offer and put every handover detail in writing-from corporate records to the business phone number. An honest price upfront, not surprises after you've committed.
     </p>
   </div>

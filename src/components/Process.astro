@@ -17,7 +17,7 @@ import SplitHeading from "./SplitHeading.astro";
     </p>
     <div class="grid w-full gap-4 lg:grid-cols-3 lg:gap-10" data-stagger-group>
       {processSteps.map((step, index) => (
-        <BaseCard index={index} eyebrow={step.eyebrow} title={step.title} description={step.description} />
+        <BaseCard index={index} title={step.title} description={step.description} />
       ))}
     </div>
   </div>

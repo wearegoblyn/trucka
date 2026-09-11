@@ -43,7 +43,7 @@
   --color-background: #000000;
   --color-surface-card: #0f1115;
   --color-text-primary: #ffffff;
-  --color-text-secondary: #8c9bae;
+  --color-text-secondary: #c8d3e0;
   --color-text-accent: #a7d2ff;
   --color-text-on-light: #000000;
   --color-action-primary: #a7d2ff;
@@ -57,6 +57,8 @@
   --font-sans: "Inter Variable", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Merriweather", "Merriweather Fallback", ui-serif, Georgia, serif;
   --font-brand: "Libre Franklin", "Libre Franklin Fallback", ui-sans-serif, system-ui, sans-serif;
+  --leading-heading: 1.15;
+  --leading-body: 1.6;
   --ease-motion: cubic-bezier(0.42, 0, 0.58, 1);
   --duration-fast: 200ms;
   --duration-panel: 450ms;
@@ -91,6 +93,7 @@ body {
   background: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
+  line-height: var(--leading-body);
 }
 
 .site-header {
@@ -166,7 +169,7 @@ html.js [data-stagger-group].is-inview > * {
   height: min(70vw, 820px);
   pointer-events: none;
   transform: translate(-50%, -50%);
-  animation: scope-look 14s ease-in-out infinite;
+  animation: scope-look 10s cubic-bezier(0.4, 0.12, 0.6, 0.88) infinite;
 }
 
 .scope-blob-eye {
@@ -174,7 +177,7 @@ html.js [data-stagger-group].is-inview > * {
   height: 100%;
   border-radius: 50%;
   background: radial-gradient(
-    circle at 38% 42%,
+    circle at 50% 50%,
     rgb(212 251 255 / 0.5) 0%,
     rgb(108 180 255 / 0.32) 28%,
     rgb(25 90 158 / 0.2) 52%,
@@ -184,18 +187,27 @@ html.js [data-stagger-group].is-inview > * {
 }
 
 @keyframes scope-look {
-  0%,
-  18% {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+
+  22%,
+  26% {
     transform: translate(calc(-50% - 22%), -50%);
   }
 
-  50%,
-  68% {
+  48%,
+  52% {
+    transform: translate(-50%, -50%);
+  }
+
+  74%,
+  78% {
     transform: translate(calc(-50% + 22%), -50%);
   }
 
   100% {
-    transform: translate(calc(-50% - 22%), -50%);
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -240,7 +252,7 @@ html.js [data-stagger-group].is-inview > * {
 @utility heading-section {
   font-family: var(--font-serif);
   font-size: 32px;
-  line-height: 1.2;
+  line-height: var(--leading-heading);
   color: var(--color-text-primary);
 
   @variant lg {
@@ -250,7 +262,6 @@ html.js [data-stagger-group].is-inview > * {
 
   @variant display {
     font-size: 3rem;
-    line-height: 1;
   }
 }
 
@@ -284,7 +295,7 @@ html.js [data-stagger-group].is-inview > * {
 
 @utility body-copy {
   font-size: 1.125rem;
-  line-height: 1.6;
+  line-height: var(--leading-body);
   color: var(--color-text-secondary);
 }
 
@@ -378,16 +389,19 @@ html.js [data-stagger-group].is-inview > * {
 @utility text-velocity-clip {
   background-image:
     radial-gradient(
-      ellipse 70% 80% at 82% 60%,
+      ellipse 55% 90% at 50% 50%,
       var(--color-glow-hi) 0%,
-      transparent 58%
+      transparent 62%
     ),
     linear-gradient(
-      108deg,
-      var(--color-glow-lo) 6%,
-      var(--color-glow-mid) 42%,
-      var(--color-text-accent) 72%,
-      var(--color-glow-hi) 96%
+      90deg,
+      var(--color-glow-lo) 0%,
+      var(--color-glow-mid) 22%,
+      var(--color-text-accent) 42%,
+      var(--color-glow-hi) 50%,
+      var(--color-text-accent) 58%,
+      var(--color-glow-mid) 78%,
+      var(--color-glow-lo) 100%
     );
   -webkit-background-clip: text;
   background-clip: text;

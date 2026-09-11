@@ -1,5 +1,5 @@
 ---
-import { getImage } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import heroDesktop from "../assets/hero-desktop.jpg";
 import heroMobile from "../assets/hero-mobile.jpg";
 import Button from "./Button.astro";
@@ -7,6 +7,7 @@ import SectionBadge from "./SectionBadge.astro";
 import SplitHeading from "./SplitHeading.astro";
 
 const quality = 80;
+const sizes = "100vw";
 
 const desktopAvif = await getImage({
   src: heroDesktop,
@@ -29,17 +30,10 @@ const mobileAvif = await getImage({
   widths: [390, heroMobile.width],
   quality,
 });
-const mobileWebp = await getImage({
-  src: heroMobile,
-  format: "webp",
-  width: heroMobile.width,
-  widths: [390, heroMobile.width],
-  quality,
-});
 ---
 
 <section
-  class="relative isolate flex py-16 lg:-mt-[var(--header-height)] lg:pt-[calc(4rem+var(--header-height))] display:min-h-dvh display:flex-col display:justify-center display:py-24"
+  class="relative isolate flex -mt-[var(--header-height)] py-16 pt-[calc(4rem+var(--header-height))] display:min-h-dvh display:flex-col display:justify-center display:py-24"
   aria-labelledby="hero-heading"
   data-reveal-root
   data-reveal-on="load"
@@ -50,39 +44,38 @@ const mobileWebp = await getImage({
         media="(min-width: 64rem)"
         type="image/avif"
         srcset={desktopAvif.srcSet.attribute}
-        sizes="100vw"
+        sizes={sizes}
       />
       <source
         media="(min-width: 64rem)"
         type="image/webp"
         srcset={desktopWebp.srcSet.attribute}
-        sizes="100vw"
+        sizes={sizes}
       />
-      <source type="image/avif" srcset={mobileAvif.srcSet.attribute} sizes="100vw" />
-      <source type="image/webp" srcset={mobileWebp.srcSet.attribute} sizes="100vw" />
-      <img
-        src={mobileWebp.src}
+      <source type="image/avif" srcset={mobileAvif.srcSet.attribute} sizes={sizes} />
+      <Image
+        src={heroMobile}
         alt=""
-        width={heroMobile.width}
-        height={heroMobile.height}
+        format="webp"
+        widths={[390, heroMobile.width]}
+        sizes={sizes}
+        quality={quality}
         class="h-full w-full max-w-none object-cover object-bottom opacity-70 xl:opacity-80"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
+        priority
       />
     </picture>
     <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/45 to-black/85"></div>
   </div>
 
   <div class="page-wrap flex flex-col items-start gap-6 lg:items-center lg:gap-8 display:gap-12">
-    <SectionBadge label="Direct Acquisition Advisory" />
+    <SectionBadge label="Direct Acquisition Advisory" loading="eager" />
     <SplitHeading
       as="h1"
       id="hero-heading"
-      class="max-w-[1100px] font-serif text-[40px] leading-[1.2] text-text-primary lg:text-center lg:text-5xl lg:leading-[1.1] lg:text-balance display:text-[72px]"
+      class="max-w-[1100px] font-serif text-[40px] leading-heading text-text-primary lg:text-center lg:text-5xl lg:text-balance display:text-[72px]"
       text={"We buy trucking companies\nthe way it's supposed to be\u00a0done."}
     />
-    <p data-reveal data-reveal-delay="2" class="max-w-[720px] text-base leading-[1.5] text-accent-soft lg:text-center lg:text-xl lg:leading-[1.6]">
+    <p data-reveal data-reveal-delay="2" class="body-copy max-w-[720px] lg:text-center">
       Velocity Strategic Inc. is the premier corporate acquirer paying outright cash for trucking corporations and LLCs with complete security, legal purchase agreements, and verified third-party escrow.
     </p>
     <div data-reveal data-reveal-delay="3" class="cta-row">
