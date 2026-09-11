@@ -1,9 +1,41 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "../assets/hero-desktop.png";
+import { getImage } from "astro:assets";
+import heroDesktop from "../assets/hero-desktop.jpg";
+import heroMobile from "../assets/hero-mobile.jpg";
 import Button from "./Button.astro";
 import SectionBadge from "./SectionBadge.astro";
 import SplitHeading from "./SplitHeading.astro";
+
+const quality = 70;
+
+const desktopAvif = await getImage({
+  src: heroDesktop,
+  format: "avif",
+  width: 1920,
+  widths: [960, 1440, 1920],
+  quality,
+});
+const desktopWebp = await getImage({
+  src: heroDesktop,
+  format: "webp",
+  width: 1920,
+  widths: [960, 1440, 1920],
+  quality,
+});
+const mobileAvif = await getImage({
+  src: heroMobile,
+  format: "avif",
+  width: 780,
+  widths: [390, 780],
+  quality,
+});
+const mobileWebp = await getImage({
+  src: heroMobile,
+  format: "webp",
+  width: 780,
+  widths: [390, 780],
+  quality,
+});
 ---
 
 <section
@@ -13,21 +45,32 @@ import SplitHeading from "./SplitHeading.astro";
   data-reveal-on="load"
 >
   <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-    <Picture
-      src={heroImage}
-      alt=""
-      widths={[390, 780, 1440]}
-      sizes="100vw"
-      width={1440}
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={70}
-      pictureAttributes={{ class: "absolute inset-0 h-full w-full" }}
-      class="h-full w-full max-w-none object-cover object-bottom opacity-70 xl:opacity-80"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-    />
+    <picture class="absolute inset-0 h-full w-full">
+      <source
+        media="(min-width: 64rem)"
+        type="image/avif"
+        srcset={desktopAvif.srcSet.attribute}
+        sizes="100vw"
+      />
+      <source
+        media="(min-width: 64rem)"
+        type="image/webp"
+        srcset={desktopWebp.srcSet.attribute}
+        sizes="100vw"
+      />
+      <source type="image/avif" srcset={mobileAvif.srcSet.attribute} sizes="100vw" />
+      <source type="image/webp" srcset={mobileWebp.srcSet.attribute} sizes="100vw" />
+      <img
+        src={mobileWebp.src}
+        alt=""
+        width={heroMobile.width}
+        height={heroMobile.height}
+        class="h-full w-full max-w-none object-cover object-bottom opacity-70 xl:opacity-80"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
     <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/45 to-black/85"></div>
   </div>
 
