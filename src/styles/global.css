@@ -317,7 +317,7 @@ html.js [data-stagger-group].is-inview > * {
     ),
     linear-gradient(
       108deg,
-      rgb(167 210 255) 6%,
+      rgb(25 90 158) 6%,
       rgb(108 180 255) 42%,
       rgb(167 210 255) 72%,
       rgb(212 251 255) 96%
@@ -325,6 +325,7 @@ html.js [data-stagger-group].is-inview > * {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .btn-primary {
