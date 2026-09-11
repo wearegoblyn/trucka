@@ -1,5 +1,6 @@
 ---
 import { faqs, site } from "../data/content";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import merriweatherLatin from "@fontsource/merriweather/files/merriweather-latin-400-normal.woff2?url";
 import "../styles/global.css";
@@ -87,5 +88,6 @@ const schema = {
     <script>
       import "../scripts/reveal";
     </script>
+    <SpeedInsights />
   </body>
 </html>
