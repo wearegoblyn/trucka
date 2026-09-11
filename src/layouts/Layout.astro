@@ -1,5 +1,8 @@
 ---
 import { faqs, site } from "../data/content";
+import SpeedInsights from "@vercel/speed-insights/astro";
+import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
+import merriweatherLatin from "@fontsource/merriweather/files/merriweather-latin-400-normal.woff2?url";
 import "../styles/global.css";
 
 interface Props {
@@ -62,6 +65,8 @@ const schema = {
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={merriweatherLatin} as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta property="og:type" content="website" />
@@ -83,5 +88,6 @@ const schema = {
     <script>
       import "../scripts/reveal";
     </script>
+    <SpeedInsights />
   </body>
 </html>

@@ -1,4 +1,4 @@
-const REVEAL_SELECTOR = "[data-reveal], .split-heading, [data-stagger-group]";
+const REVEAL_SELECTOR = "[data-reveal], [data-stagger-group]";
 
 function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  style?: "primary" | "secondary" | "outline";
+  style?: "primary" | "secondary";
   label: string;
   href?: string;
   full?: boolean;
@@ -12,11 +12,10 @@ const { style = "primary", label, href, full = false, disabled = false } = Astro
 const styles = {
   primary: "btn-primary text-text-on-light",
   secondary: "btn-secondary text-text-primary",
-  outline: "btn-secondary text-text-primary",
 };
 
 const width = full ? "w-full lg:w-auto" : "w-auto shrink-0";
-const classes = `inline-flex items-center justify-center whitespace-nowrap rounded-[30px] border-[1.5px] px-7 py-3.5 text-center text-base font-semibold leading-none transition-[box-shadow,color] duration-200 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-primary lg:px-8 lg:py-5 ${styles[style]} ${width}`;
+const classes = `inline-flex items-center justify-center whitespace-nowrap rounded-[30px] border-[1.5px] px-7 py-3.5 text-center text-base font-semibold leading-none transition-fast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-action-primary display:px-8 display:py-5 ${styles[style]} ${width}`;
 ---
 
 {href && !disabled ? (
