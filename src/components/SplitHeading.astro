@@ -8,57 +8,19 @@ interface Props {
 }
 
 const { as: Tag = "h2", text, class: className = "", id, delay = "1" } = Astro.props;
-
-type Char = { char: string; i: number };
-type WordToken = { type: "word"; parts: Char[][] };
-type SpaceToken = { type: "space" };
-type BreakToken = { type: "break" };
-type Token = WordToken | SpaceToken | BreakToken;
-
-let i = 0;
-
-const tokenizeLine = (line: string): Token[] =>
-  line.split(/([ \t]+)/).flatMap((part: string) => {
-    if (part.length === 0) return [];
-    if (/^[ \t]+$/.test(part)) return [{ type: "space" } satisfies SpaceToken];
-
-    return [
-      {
-        type: "word",
-        parts: part.split("\u00a0").map((piece) =>
-          Array.from(piece).map((char: string) => ({ char, i: i++ })),
-        ),
-      } satisfies WordToken,
-    ];
-  });
-
-const tokens: Token[] = text.split("\n").flatMap((line, index) => {
-  const lineTokens = tokenizeLine(line);
-  if (index === 0) return lineTokens;
-  return [{ type: "break" } satisfies BreakToken, ...lineTokens];
-});
+const lines = text.split("\n");
 ---
 
-<Tag id={id} class:list={["split-heading", className]} data-reveal-delay={delay}>
-  {tokens.map((token) =>
-    token.type === "break" ? (
-      <>
-        <span class="split-space lg:hidden">{" "}</span>
-        <br class="hidden lg:block" />
-      </>
-    ) : token.type === "space" ? (
-      <span class="split-space">{" "}</span>
-    ) : (
-      <span class="word">
-        {token.parts.map((chars, partIndex) => (
-          <>
-            {partIndex > 0 && <span class="split-space">{" "}</span>}
-            {chars.map(({ char, i: index }) => (
-              <span class="char" style={`--i: ${index}`}>{char}</span>
-            ))}
-          </>
-        ))}
-      </span>
-    )
-  )}
+<Tag id={id} class:list={[className]} data-reveal data-reveal-delay={delay}>
+  {lines.map((line, index) => (
+    <>
+      {index > 0 && (
+        <>
+          <span class="lg:hidden">{" "}</span>
+          <br class="hidden lg:block" />
+        </>
+      )}
+      {line}
+    </>
+  ))}
 </Tag>

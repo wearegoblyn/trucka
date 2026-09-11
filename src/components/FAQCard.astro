@@ -46,7 +46,7 @@ const panelId = `faq-panel-${index}`;
   .faq-panel {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows 0.45s ease-in-out;
+    transition: grid-template-rows var(--duration-panel) var(--ease-motion);
   }
 
   .faq-item.is-open .faq-panel {
@@ -59,7 +59,7 @@ const panelId = `faq-panel-${index}`;
   }
 
   .faq-icon {
-    transition: transform 0.45s ease-in-out;
+    transition: transform var(--duration-panel) var(--ease-motion);
   }
 
   .faq-item.is-open .faq-icon {

@@ -3,16 +3,16 @@ import SectionBadge from "./SectionBadge.astro";
 import SplitHeading from "./SplitHeading.astro";
 ---
 
-<section id="escrow" class="scroll-mt-24 overflow-visible bg-background py-16 lg:scroll-mt-28 lg:py-[120px]" data-reveal-root>
+<section id="escrow" class="section-pad overflow-visible bg-background" data-reveal-root>
   <div class="page-wrap grid grid-cols-1 items-center gap-6 lg:grid-cols-2 lg:gap-16 xl:grid-cols-[minmax(0,1fr)_minmax(0,600px)] xl:gap-24 2xl:gap-32">
     <div class="flex max-w-[600px] flex-col items-start gap-6 lg:gap-8">
       <SectionBadge label="Financial Integrity Protocol" />
       <SplitHeading
-        class="font-serif text-[32px] leading-[1.2] text-text-primary lg:text-5xl lg:leading-none lg:text-balance"
+        class="heading-section"
         text="Escrow. Clear terms. No guesswork."
       />
       <div data-reveal data-reveal-delay="2" class="flex flex-col gap-4">
-      <p class="text-lg leading-[1.6] text-text-secondary">
+      <p class="body-copy">
         "Send me the money and I'll send you the logins" leaves too much to chance. Every deal we do goes through escrow, with funds deposited into a third-party account before the purchase agreement is signed.
       </p>
       <p class="text-base leading-[1.6] text-text-secondary">
@@ -32,8 +32,8 @@ import SplitHeading from "./SplitHeading.astro";
 
         <div class="mt-6 flex flex-col gap-3 lg:mt-7 lg:gap-3.5">
           <p class="pl-1 text-[15px] text-text-primary lg:text-[19px]">Escrow Agent</p>
-          <div class="bubble bubble-in max-w-[92%] self-start bg-[#f6f6f6] px-5 py-4 lg:px-5 lg:py-5">
-            <p class="text-[15px] leading-[1.35] text-text-on-light lg:text-[21px] lg:leading-[1.3]">
+          <div class="bubble bubble-in">
+            <p class="bubble-copy text-text-on-light">
               Funds received and held in escrow. We're ready for the purchase agreement to be signed.
             </p>
           </div>
@@ -42,15 +42,15 @@ import SplitHeading from "./SplitHeading.astro";
             <span class="font-bold">Today</span> 8:04 AM
           </p>
 
-          <div class="bubble bubble-out max-w-[88%] self-end bg-action-strong px-4 py-3.5 lg:px-4 lg:py-4">
-            <p class="text-[15px] leading-[1.35] text-text-primary lg:text-[21px] lg:leading-[1.3]">
+          <div class="bubble bubble-out">
+            <p class="bubble-copy text-text-primary">
               So the money stays with you until the closing conditions are met?
             </p>
           </div>
 
           <p class="pl-1 text-[15px] text-text-primary lg:text-[19px]">Escrow Agent</p>
-          <div class="bubble bubble-in max-w-[92%] self-start bg-[#f6f6f6] px-5 py-4 lg:px-5 lg:py-5">
-            <p class="text-[15px] leading-[1.35] text-text-on-light lg:text-[21px] lg:leading-[1.3]">
+          <div class="bubble bubble-in">
+            <p class="bubble-copy text-text-on-light">
               Correct. We release it only when the conditions in the agreement are satisfied.
             </p>
           </div>
@@ -59,8 +59,8 @@ import SplitHeading from "./SplitHeading.astro";
             <span class="font-bold">Today</span> 8:12 AM
           </p>
 
-          <div class="bubble bubble-out max-w-[88%] self-end bg-action-strong px-4 py-3.5 lg:px-4 lg:py-4">
-            <p class="text-[15px] leading-[1.35] text-text-primary lg:text-[21px] lg:leading-[1.3]">
+          <div class="bubble bubble-out">
+            <p class="bubble-copy text-text-primary">
               Got it. Send over the agreement and I'll review the closing conditions.
             </p>
           </div>
@@ -69,38 +69,3 @@ import SplitHeading from "./SplitHeading.astro";
     </div>
   </div>
 </section>
-
-<style>
-  .bubble {
-    position: relative;
-  }
-
-  .bubble-in {
-    border-radius: 22px 22px 22px 5px;
-  }
-
-  .bubble-out {
-    border-radius: 22px 22px 5px 22px;
-  }
-
-  .bubble-in::after,
-  .bubble-out::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 14px;
-    height: 18px;
-  }
-
-  .bubble-in::after {
-    left: -6px;
-    background: #f6f6f6;
-    clip-path: path("M14 0 C14 10 10 16 0 18 L14 18 Z");
-  }
-
-  .bubble-out::after {
-    right: -6px;
-    background: var(--color-action-strong);
-    clip-path: path("M0 0 C0 10 4 16 14 18 L0 18 Z");
-  }
-</style>
