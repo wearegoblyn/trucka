@@ -17,9 +17,17 @@ import SplitHeading from "./SplitHeading.astro";
         We keep the process transparent so you can make an informed decision about whether a corporate acquisition is the right path for your business.
       </p>
     </div>
-    <div class="w-full max-w-full" data-stagger-group>
+    <div
+      class="-mx-5 w-[calc(100%+2.5rem)] lg:mx-0 lg:w-full"
+      data-stagger-group
+    >
       {faqs.map((faq, index) => (
-        <FAQCard index={index} question={faq.question} answer={faq.answer} />
+        <FAQCard
+          index={index}
+          total={faqs.length}
+          question={faq.question}
+          answer={faq.answer}
+        />
       ))}
     </div>
   </div>
