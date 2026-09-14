@@ -3,23 +3,16 @@ interface Props {
   question: string;
   answer: string;
   index?: number;
-  total?: number;
 }
 
-const { question, answer, index = 0, total = 1 } = Astro.props;
+const { question, answer, index = 0 } = Astro.props;
 const panelId = `faq-panel-${index}`;
-const steps = Math.max(total - 1, 1);
-const mix = 78 - (index / steps) * 58;
 ---
 
-<div
-  class="faq-item w-full"
-  data-faq-item
-  style={`--i: ${index}; --faq-mix: ${mix}%;`}
->
+<div class="faq-item w-full border-b border-white/25" data-faq-item style={`--i: ${index}`}>
   <button
     type="button"
-    class="flex w-full cursor-pointer items-center justify-between gap-6 px-5 py-5 text-left text-white lg:px-0"
+    class="flex w-full cursor-pointer items-center justify-between gap-6 py-5 text-left text-white"
     data-faq-trigger
     aria-expanded="false"
     aria-controls={panelId}
@@ -44,30 +37,12 @@ const mix = 78 - (index / steps) * 58;
   </button>
   <div id={panelId} class="faq-panel" role="region">
     <div class="faq-panel-inner">
-      <p class="body-copy w-full px-5 pb-5 pr-16 lg:px-0 lg:pr-12">{answer}</p>
+      <p class="body-copy w-full pb-5 pr-12">{answer}</p>
     </div>
   </div>
 </div>
 
 <style>
-  .faq-item {
-    background-color: color-mix(
-      in srgb,
-      var(--color-action-strong) var(--faq-mix),
-      rgb(6 24 42)
-    );
-    transition: background-color var(--duration-fast) var(--ease-motion);
-  }
-
-  .faq-item:hover,
-  .faq-item:focus-within {
-    background-color: color-mix(
-      in srgb,
-      var(--color-action-strong) calc(var(--faq-mix) + 8%),
-      rgb(6 24 42)
-    );
-  }
-
   .faq-panel {
     display: grid;
     grid-template-rows: 0fr;
