@@ -9,16 +9,16 @@ const { question, answer, index = 0 } = Astro.props;
 const panelId = `faq-panel-${index}`;
 ---
 
-<div class="faq-item w-full border-b border-white/25" data-faq-item style={`--i: ${index}`}>
+<div class="faq-item w-full border-b border-border-subtle" data-faq-item style={`--i: ${index}`}>
   <button
     type="button"
-    class="flex w-full cursor-pointer items-center justify-between gap-6 py-5 text-left text-white"
+    class="flex w-full cursor-pointer items-center justify-between gap-6 py-5 text-left text-text-primary"
     data-faq-trigger
     aria-expanded="false"
     aria-controls={panelId}
   >
     <h3 class="font-serif text-xl font-normal leading-heading text-text-primary">{question}</h3>
-    <span class="flex size-8 shrink-0 items-center justify-center text-white" aria-hidden="true">
+    <span class="flex size-8 shrink-0 items-center justify-center text-text-primary" aria-hidden="true">
       <svg
         class="faq-icon size-5"
         viewBox="0 0 20 20"

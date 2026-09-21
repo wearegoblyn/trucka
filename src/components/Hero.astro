@@ -60,11 +60,11 @@ const mobileAvif = await getImage({
         widths={[390, heroMobile.width]}
         sizes={sizes}
         quality={quality}
-        class="h-full w-full max-w-none object-cover object-bottom opacity-70 xl:opacity-80"
+        class="hero-photo h-full w-full max-w-none object-cover object-bottom opacity-70 xl:opacity-80"
         priority
       />
     </picture>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/45 to-black/85"></div>
+    <div class="bg-hero-scrim absolute inset-0"></div>
   </div>
 
   <div class="page-wrap flex flex-col items-start gap-6 lg:items-center lg:gap-8 display:gap-12">

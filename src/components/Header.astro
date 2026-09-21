@@ -1,10 +1,11 @@
 ---
 import { navLinks, site } from "../data/content";
 import Button from "./Button.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="site-header sticky top-0 z-50 border-b border-white/10 py-4 shadow-[0_8px_9px_rgba(0,0,0,0.18)] backdrop-blur-md display:py-6">
-  <div class="page-wrap flex items-center justify-between">
+<header class="site-header sticky top-0 z-50 border-b border-border-subtle py-4 shadow-[0_8px_9px_var(--header-shadow)] backdrop-blur-md display:py-6">
+  <div class="page-wrap flex items-center justify-between gap-4">
   {/* Temporary type logo. Replace with the company mark and drop Libre Franklin (--font-brand). */}
   <a href="#top" class="shrink-0 font-brand text-2xl font-bold leading-none text-text-primary transition-fast hover:opacity-80 display:text-[32px]">
     {site.shortName}
@@ -14,11 +15,14 @@ import Button from "./Button.astro";
       <a class="transition-fast hover:text-text-accent" href={link.href}>{link.label}</a>
     ))}
   </nav>
-  <div class="hidden lg:block">
-    <Button href="#contact" label="Get Started" style="primary" />
-  </div>
-  <div class="lg:hidden">
-    <Button href="#contact" label="Contact" style="primary" />
+  <div class="flex items-center gap-3 lg:gap-4">
+    <ThemeToggle />
+    <div class="hidden lg:block">
+      <Button href="#contact" label="Get Started" style="primary" />
+    </div>
+    <div class="lg:hidden">
+      <Button href="#contact" label="Contact" style="primary" />
+    </div>
   </div>
   </div>
 </header>
